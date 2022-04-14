@@ -23,3 +23,6 @@ while True:
     f = m.menu()
     f()
 ```
+
+Since I didn't want to copy git repos into other projects, I made a pip package
+`$ pip install yodas`
