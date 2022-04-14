@@ -4,13 +4,13 @@ import json
 class JSON:
     """
     This class takes a path to a JSON file and loads its contents.
-    If the JSON file doesn't exist, it will construct the json file, save it and still get the required contents
+    If the JSON file doesn't exist, it will construct the yodas file, save it and still get the required contents
 
     For some reason I was running this in python 2.7, note that it does not work in 2.7
     """
     def __init__(self, path, valueTitles):
         self.path = path
-        self.valueTitles = valueTitles  # used for when the JSON doesn't exist and constructs a json with these values
+        self.valueTitles = valueTitles  # used for when the JSON doesn't exist and constructs a yodas with these values
 
     def contents(self):
         contents = self.openJSON()
@@ -40,8 +40,8 @@ class JSON:
             jsonFile.close()
             return file
         except IOError:
-            if ".json" not in path:  # try opening the json file with .json
-                self.setPath(path + ".json")
+            if ".yodas" not in path:  # try opening the yodas file with .yodas
+                self.setPath(path + ".yodas")
                 return self.openJSON()
             else:
                 return {}

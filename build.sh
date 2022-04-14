@@ -1,4 +1,4 @@
-python -m pip install --upgrade build
+rm -rf dist
+python -m pip install --upgrade twine build
 python -m build
-python -m pip install --upgrade twine
-python -m twine upload dist/*
+python -m twine upload dist/* --verbose
