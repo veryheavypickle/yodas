@@ -1,44 +1,68 @@
-def menuOptions(optionsList, title=None, subtitle=None, validate=True):
-    print("\n")
-    if subtitle is not None:
-        print("\n" + subtitle)
-    if title is not None:
-        print("\n" + title)
-    print("=" * 100)
-    backText = "Menu/Quit"
-    optionsList.insert(0, backText)
-    for i in range(len(optionsList)):
-        print("{0} : {1}".format(i, optionsList[i]))
-    optionsList.pop(0)
-    try:
-        option = int(input("\nChoose an option: "))
-    except Exception as e:
-        print("\nOh no, that ain't a number, cowboy")
-        print(e)
+class Menu:
+    """
+    This class takes a list of functions to put in a menu
+
+    To specify the function names, each item of the list must be a dictionary
+    in the format {"Quit python", exit}
+    """
+    def __init__(self, menuItems, title=None, subtitle=None):
+        self.menuItems = []
+        self.title = str(title)
+        self.subtitle = subtitle
+        for item in menuItems:
+            if callable(item):  # Is the menu item a function/callable variable?
+                self.menuItems.append(dict({str(item): item}))
+            elif type(item) is dict:
+                # Dictionary item must be in format
+                # {"String", functionVariable}
+                self.menuItems.append(item)
+
+        print(self.menuItems)
+
+    def menu(self):
+        print("=" * 100)
+        if self.title:
+            print("\n" + self.title)
+        if self.subtitle:
+            print("\n" + self.subtitle)
+
+        for i in range(len(self.menuItems)):
+            functionName = self.menuItems[i].keys()[0]
+            print("{0} : {1}".format(i, functionName))
+
+        # Select option
         option = -1
-    if 0 <= option <= len(optionsList) or not validate:  # checks if option is within range
-        if option == 0:
-            if title == "Main Menu":
-                exit()
-            else:
-                menu()
+        try:
+            option = int(input("\nChoose an option: "))
+        except ValueError:
+            print("Not a number :(")
+            self.menu()
+        except NameError:
+            print("Not a number :(")
+            return self.menu()
+
+        # Validate
+        if 0 <= option <= len(self.menuItems) - 1:
+            chosenFunctionName = self.menuItems[option].keys()[0]
+            chosenFunction = self.menuItems[option][chosenFunctionName]
         else:
-            return int(option - 1)
-    else:
-        print("\nThat option doesn't seem to be available :(")
-        return menuOptions(optionsList, title=title, validate=validate)
+            print("Number out of bounds")
+            return self.menu()
+        return chosenFunction
 
 
-def menu(error=None):
-    options = ["Menu 1",
-               "Menu 2"]
+def sample1():
+    print("Here is where you put the function")
+
+
+def sample2():
+    print("The code works okay, may not be pretty but it works")
+    raise Exception("The ugliest code I think i've written")
+
+
+if __name__ == '__main__':
+    options = [{"Quit": exit},
+               {"Menu 2": sample1}]
+    m = Menu(options, title="Main menu")
     while True:
-        option = menuOptions(options, title="Main Menu", subtitle=error)
-        if option == 0:
-            print("Here is where you put the function")
-        elif option == 1:
-            print("The code works okay, may not be pretty but it works")
-        error = None  # this is so the error doesn't show up again in the menu after it was triggered
-
-
-menu()
+        m.menu()
