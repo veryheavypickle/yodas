@@ -1,4 +1,5 @@
 import json
+import os
 
 
 class Yoda:
@@ -55,6 +56,10 @@ class Yoda:
         jsonFile = open(path, "w")
         json.dump(contents, jsonFile, indent=4)
         jsonFile.close()
+
+    def delete(self):
+        if os.path.exists(self.getPath()):
+            os.remove(self.getPath())
 
     def getPath(self):
         return self.path
