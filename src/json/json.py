@@ -1,7 +1,7 @@
 import json
 
 
-class Json:
+class JSON:
     """
     This class takes a path to a JSON file and loads its contents.
     If the JSON file doesn't exist, it will construct the json file, save it and still get the required contents
