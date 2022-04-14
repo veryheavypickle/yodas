@@ -49,20 +49,3 @@ class Menu:
             print("Number out of bounds")
             return self.menu()
         return chosenFunction
-
-
-def sample1():
-    print("Here is where you put the function")
-
-
-def sample2():
-    print("The code works okay, may not be pretty but it works")
-    raise Exception("The ugliest code I think i've written")
-
-
-if __name__ == '__main__':
-    options = [{"Quit": exit},
-               {"Menu 2": sample1}]
-    m = Menu(options, title="Main menu")
-    while True:
-        m.menu()
