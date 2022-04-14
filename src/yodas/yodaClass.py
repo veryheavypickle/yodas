@@ -1,38 +1,39 @@
 import json
 
 
-class JSON:
+class Yoda:
     """
     This class takes a path to a JSON file and loads its contents.
-    If the JSON file doesn't exist, it will construct the yodas file, save it and still get the required contents
+    If the JSON file doesn't exist, it will construct the JSON file, save it and still get the required contents
 
     For some reason I was running this in python 2.7, note that it does not work in 2.7
     """
-    def __init__(self, path, valueTitles):
+    def __init__(self, path, keys):
         self.path = path
-        self.valueTitles = valueTitles  # used for when the JSON doesn't exist and constructs a yodas with these values
+        self.keys = keys  # used for when the JSON doesn't exist and constructs a json with these values
 
     def contents(self):
-        contents = self.openJSON()
+        contents = self.open()
         if contents == {}:
             contents = self.__createJSON()
         return contents
 
     def __createJSON(self):
-        titles = self.valueTitles
+        titles = self.keys
         contents = {}
         print("For each of the keys below, paste the value")
         for title in titles:
             try:
                 value = str(input("{}: ".format(title)))
             except NameError:
+                value = ":("
                 print("You are not running python 3!")
             contents[title] = value
 
-        self.writeJSON(contents)
+        self.write(contents)
         return contents
 
-    def openJSON(self):
+    def open(self):
         path = self.getPath()
         try:
             jsonFile = open(path)
@@ -40,15 +41,15 @@ class JSON:
             jsonFile.close()
             return file
         except IOError:
-            if ".yodas" not in path:  # try opening the yodas file with .yodas
-                self.setPath(path + ".yodas")
-                return self.openJSON()
+            if ".json" not in path:  # try opening the json file with .json
+                self.setPath(path + ".json")
+                return self.open()
             else:
                 return {}
         except ValueError:
             return {}
 
-    def writeJSON(self, contents):
+    def write(self, contents):
         assert type(contents) is dict
         path = self.getPath()
         jsonFile = open(path, "w")

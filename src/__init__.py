@@ -1,1 +1,1 @@
-from yodas import *
+from .yodas import *

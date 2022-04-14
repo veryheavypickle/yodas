@@ -11,8 +11,8 @@ class Menu:
     def __init__(self, items, title=None, subtitle=None, execute=True):
         assert type(items) is list
         self.items = []
-        self.title = str(title)
-        self.subtitle = str(subtitle)
+        self.title = title
+        self.subtitle = subtitle
         self.execute = bool(execute)
         for item in items:
             if callable(item):  # Is the menu item a function/callable variable?
