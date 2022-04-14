@@ -1,44 +1,63 @@
 import json
 
 
-def getKeys():
-    keysPath = "json.json"
-    keys = openJSON(keysPath)
+class Json:
+    """
+    This class takes a path to a JSON file and loads its contents.
+    If the JSON file doesn't exist, it will construct the json file, save it and still get the required contents
 
-    if keys == {}:
-        keys = createKeys(keysPath)
+    For some reason I was running this in python 2.7, note that it does not work in 2.7
+    """
+    def __init__(self, path, valueTitles):
+        self.path = path
+        self.valueTitles = valueTitles  # used for when the JSON doesn't exist and constructs a json with these values
 
-    return keys
+    def contents(self):
+        contents = self.openJSON()
+        if contents == {}:
+            contents = self.__createJSON()
+        return contents
 
+    def __createJSON(self):
+        titles = self.valueTitles
+        contents = {}
+        print("For each of the keys below, paste the value")
+        for title in titles:
+            try:
+                value = str(input("{}: ".format(title)))
+            except NameError:
+                print("You are not running python 3!")
+            contents[title] = value
 
-def createKeys(path):
-    keyTypes = ["username",
-                "password"]
-    keys = {}
-    for keyType in keyTypes:
-        print("\nPaste the {0} below".format(keyType))
-        key = input("{}: ".format(keyType))
-        keys[keyType] = key
+        self.writeJSON(contents)
+        return contents
 
-    writeJSON(path, keys)
-    print("New keys file created!")
-    return keys
+    def openJSON(self):
+        path = self.getPath()
+        try:
+            jsonFile = open(path)
+            file = json.load(jsonFile)
+            jsonFile.close()
+            return file
+        except IOError:
+            if ".json" not in path:  # try opening the json file with .json
+                self.setPath(path + ".json")
+                return self.openJSON()
+            else:
+                return {}
+        except ValueError:
+            return {}
 
-
-def openJSON(path):
-    # Path should always contain the extension
-    try:
-        jsonFile = open(path)
-        file = json.load(jsonFile)
+    def writeJSON(self, contents):
+        assert type(contents) is dict
+        path = self.getPath()
+        jsonFile = open(path, "w")
+        json.dump(contents, jsonFile, indent=4)
         jsonFile.close()
-        return file
-    except FileNotFoundError:
-        return {}
 
+    def getPath(self):
+        return self.path
 
-def writeJSON(path, data):
-    assert type(data) is dict
-    jsonFile = open(path, "w")
-    json.dump(data, jsonFile)
-    jsonFile.close()
-    print("Saved to path: {}".format(path))
+    def setPath(self, path):
+        self.path = path
+

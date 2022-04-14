@@ -11,13 +11,15 @@ class Menu:
         self.subtitle = subtitle
         for item in menuItems:
             if callable(item):  # Is the menu item a function/callable variable?
-                self.menuItems.append(dict({str(item): item}))
+                try:
+                    self.menuItems.append({item.__name__: item})
+                except AttributeError:
+                    # I will assume it is quit
+                    self.menuItems.append({"Quit": item})
             elif type(item) is dict:
                 # Dictionary item must be in format
                 # {"String", functionVariable}
                 self.menuItems.append(item)
-
-        print(self.menuItems)
 
     def menu(self):
         print("=" * 100)
@@ -27,7 +29,7 @@ class Menu:
             print("\n" + self.subtitle)
 
         for i in range(len(self.menuItems)):
-            functionName = self.menuItems[i].keys()[0]
+            functionName = list(self.menuItems[i].keys())[0]
             print("{0} : {1}".format(i, functionName))
 
         # Select option
@@ -43,7 +45,7 @@ class Menu:
 
         # Validate
         if 0 <= option <= len(self.menuItems) - 1:
-            chosenFunctionName = self.menuItems[option].keys()[0]
+            chosenFunctionName = list(self.menuItems[option].keys())[0]
             chosenFunction = self.menuItems[option][chosenFunctionName]
         else:
             print("Number out of bounds")
