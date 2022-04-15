@@ -121,29 +121,19 @@ $ cat file.json
 ```
 
 #### Functions
-```
-Yoda.contents()
-```
+`Yoda.contents()`
 Will return the contents of the JSON file, reading from the disk everytime.
 
-```
-Yoda.write(contents)
-```
+`Yoda.write(contents)`
 Where `contents` is a dictionary. This will overwrite the existing JSON file with the variable contents
 
-```
-Yoda.delete()
-```
+`Yoda.delete()`
 Will delete the JSON file associated with the Yoda instance
 
-```
-getPath()
-```
+`getPath()`
 Is used to get the path where the JSON file is stored.
 
-```
-setPath(path)
-```
+`setPath(path)`
 Where `path` is a string. This used to set the path
 
 ## TODO
