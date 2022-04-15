@@ -1,4 +1,4 @@
-from src.yodas.utilities.strings import caseSplit
+from .utilities.strings import caseSplit
 
 
 class Menu:
