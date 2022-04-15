@@ -12,6 +12,7 @@ class Yoda:
     def __init__(self, path, keys):
         self.path = path
         self.keys = keys  # used for when the JSON doesn't exist and constructs a json with these values
+        self.contents()
 
     def contents(self):
         contents = self.open()
