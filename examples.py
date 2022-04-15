@@ -14,6 +14,12 @@ def yodaExample():
     yodaObject.delete()
 
 
+def createEmptyYoda():
+    yodaObject = Yoda("empty.json")
+    print("Yoda contents:\n{0}".format(yodaObject.contents()))
+    yodaObject.delete()
+
+
 def utilitiesExample():
     print(caseSplit("helloWorld"))
     print(caseSplit("hello_world"))
@@ -26,7 +32,8 @@ def main():
                  main,
                  {"Example of Yoda Class": yodaExample},
                  utilitiesExample,
-                 menuAsStringsExample],
+                 menuAsStringsExample,
+                 createEmptyYoda],
                 title="Example Menu")
     while True:
         menu.select()

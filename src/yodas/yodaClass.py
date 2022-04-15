@@ -9,7 +9,9 @@ class Yoda:
 
     For some reason I was running this in python 2.7, note that it does not work in 2.7
     """
-    def __init__(self, path, keys):
+    def __init__(self, path, keys=None):
+        if keys is None:
+            keys = []
         self.path = path
         self.keys = keys  # used for when the JSON doesn't exist and constructs a json with these values
         self.contents()
@@ -23,7 +25,8 @@ class Yoda:
     def __createJSON(self):
         titles = self.keys
         contents = {}
-        print("For each of the keys below, paste the value")
+        if len(titles) > 0:
+            print("For each of the keys below, paste the value")
         for title in titles:
             try:
                 value = str(input("{}: ".format(title)))

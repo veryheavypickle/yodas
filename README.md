@@ -49,8 +49,13 @@ Since I didn't want to copy git repos into other projects, I made a pip package
 2. In Yoda class, add option to have custom questions, similar to what is implemented in Menu()
 3. In Menu class, add argument management
 4. Fix camelCaseSplit() where `thisIsATest` results in `This Is ATest`
+5. Add multiple language support
 
 ## Changelog
+### 1.1.1
+1. Added support to create empty Yoda `Yoda("empty.json")` will create a JSON with `{}`
+2. Fixed issue where even in empty Yoda files, it will ask for the details
+
 ### 1.1.0
 1. Added support for string only menus
 2. Changed Menu.show() to Menu.select()
