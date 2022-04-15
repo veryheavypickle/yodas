@@ -3,7 +3,7 @@ from .utilities.strings import caseSplit
 
 class Menu:
     """
-    This class takes a list of functions to put in a menu
+    This class takes a list of functions or strings to put in a menu
 
     items
     in the format [{"Quit python", exit}]
@@ -29,8 +29,12 @@ class Menu:
                 # Dictionary item must be in format
                 # {"String", functionVariable}
                 self.items.append(item)
+            elif type(item) is str:
+                # List of strings
+                self.items.append({item: item})
+                self.execute = False
 
-    def show(self):
+    def select(self):
         print("=" * 100)
         if self.title:
             print("\n" + self.title)
@@ -63,7 +67,3 @@ class Menu:
         if self.execute:
             chosenFunction()
         return chosenFunction
-
-
-if __name__ == '__main__':
-    camelCaseSplit("helloWorld")
