@@ -28,15 +28,20 @@ def utilitiesExample():
 
 
 def main():
+    yodaObject = Yoda("test.json", ["ping!"])
     menu = Menu([quit,
                  main,
                  {"Example of Yoda Class": yodaExample},
                  utilitiesExample,
                  menuAsStringsExample,
-                 createEmptyYoda],
+                 createEmptyYoda,
+                 {"Storing object in menu": yodaObject}],
                 title="Example Menu")
     while True:
-        menu.select()
+        foo = menu.select()
+        if isinstance(foo, Yoda):
+            print(foo.contents())
+            foo.delete()
 
 
 if __name__ == '__main__':

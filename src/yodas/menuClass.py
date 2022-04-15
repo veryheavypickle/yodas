@@ -18,21 +18,7 @@ class Menu:
         self.subtitle = subtitle
         self.execute = bool(execute)
         for item in items:
-            if callable(item):  # Is the menu item a function/callable variable?
-                try:
-                    name = caseSplit(item.__name__)
-                    self.items.append({name: item})
-                except AttributeError:
-                    # I will assume it is quit
-                    self.items.append({"Quit": item})
-            elif type(item) is dict:
-                # Dictionary item must be in format
-                # {"String", functionVariable}
-                self.items.append(item)
-            elif type(item) is str:
-                # List of strings
-                self.items.append({item: item})
-                self.execute = False
+            self.add(item)
 
     def select(self):
         print("=" * 100)
@@ -64,6 +50,25 @@ class Menu:
             print("Number out of bounds")
             return self.select()
 
-        if self.execute:
+        if self.execute and callable(chosenFunction):
             chosenFunction()
         return chosenFunction
+
+    def add(self, item):
+        """
+        This adds items into the menu
+        """
+        if callable(item):  # Is the menu item a function/callable variable?
+            try:
+                name = caseSplit(item.__name__)
+                self.items.append({name: item})
+            except AttributeError:
+                # I will assume it is quit
+                self.items.append({"Quit": item})
+        elif type(item) is dict:
+            # Dictionary item must be in format
+            # {"String", functionVariable}
+            self.items.append(item)
+        else:
+            # is string, float, int... etc
+            self.items.append({item: item})

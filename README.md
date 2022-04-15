@@ -27,7 +27,7 @@ options = [{"Quit": exit},
            {"Menu 2": sample1}]
 menu = Menu(options, title="Main menu")
 while True:
-    menu.get()
+    menu.select()
 ```
 
 Since I didn't want to copy git repos into other projects, I made a pip package
@@ -52,6 +52,11 @@ Since I didn't want to copy git repos into other projects, I made a pip package
 5. Add multiple language support
 
 ## Changelog
+### 1.2.0
+1. Added full support to store items other than functions
+2. In Menu() added support to add new items after menu creation using Menu.add()
+3. In Menu() moved code to add items to Menu.add()
+
 ### 1.1.1
 1. Added support to create empty Yoda `Yoda("empty.json")` will create a JSON with `{}`
 2. Fixed issue where even in empty Yoda files, it will ask for the details
