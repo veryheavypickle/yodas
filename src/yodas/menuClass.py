@@ -51,10 +51,10 @@ class Menu:
             option = int(input("\nChoose an option: "))
         except ValueError:
             print("Not a number :(")
-            self.show()
+            self.select()
         except NameError:
             print("Not a number :(")
-            return self.show()
+            return self.select()
 
         # Validate
         if 0 <= option <= len(self.items) - 1:
@@ -62,7 +62,7 @@ class Menu:
             chosenFunction = self.items[option][chosenFunctionName]
         else:
             print("Number out of bounds")
-            return self.show()
+            return self.select()
 
         if self.execute:
             chosenFunction()
