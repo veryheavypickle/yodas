@@ -34,4 +34,5 @@ Since I didn't want to copy git repos into other projects, I made a pip package
 `$ pip install yodas`
 
 ## TODO
-1. in Yoda class, add option to have other variables like a key: list, or key: dict
+1. In Yoda class, add option to have other variables like a key: list, or key: dict
+2. In Menu class, add argument management 

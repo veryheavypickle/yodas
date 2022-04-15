@@ -1,3 +1,6 @@
+from src.yodas.utilities.strings import caseSplit
+
+
 class Menu:
     """
     This class takes a list of functions to put in a menu
@@ -17,7 +20,8 @@ class Menu:
         for item in items:
             if callable(item):  # Is the menu item a function/callable variable?
                 try:
-                    self.items.append({item.__name__: item})
+                    name = caseSplit(item.__name__)
+                    self.items.append({name: item})
                 except AttributeError:
                     # I will assume it is quit
                     self.items.append({"Quit": item})
@@ -59,3 +63,7 @@ class Menu:
         if self.execute:
             chosenFunction()
         return chosenFunction
+
+
+if __name__ == '__main__':
+    camelCaseSplit("helloWorld")

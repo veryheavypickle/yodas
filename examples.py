@@ -1,17 +1,21 @@
 from src.yodas import *
 
 
-def printJson():
-    print(jsonFile)
+def yodaExample():
+    yodaObject = Yoda("here.json", ["token"])
+    print(yodaObject.contents())
+    yodaObject.delete()
+
+
+def utilitiesExample():
+    print(caseSplit("helloWorld"))
+    print(caseSplit("hello_world"))
 
 
 def main():
-    menu = Menu([quit, main, {"Print JSON": printJson}])
+    menu = Menu([quit, main, {"Example of Yoda Class": yodaExample}, utilitiesExample])
     menu.show()
 
 
 if __name__ == '__main__':
-    # Load json
-    yodaObject = Yoda("here.json", ["token"])
-    jsonFile = yodaObject.contents()
     main()
