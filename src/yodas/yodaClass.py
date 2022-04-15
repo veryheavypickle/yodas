@@ -17,7 +17,7 @@ class Yoda:
         self.contents()
 
     def contents(self):
-        contents = self.open()
+        contents = self.__open()
         if contents == {}:
             contents = self.__createJSON()
         return contents
@@ -26,7 +26,7 @@ class Yoda:
         titles = self.keys
         contents = {}
         if len(titles) > 0:
-            print("For each of the keys below, paste the value")
+            print("For each key, give its required value")
         for title in titles:
             try:
                 value = str(input("{}: ".format(title)))
@@ -38,7 +38,7 @@ class Yoda:
         self.write(contents)
         return contents
 
-    def open(self):
+    def __open(self):
         path = self.getPath()
         try:
             jsonFile = open(path)
@@ -47,8 +47,8 @@ class Yoda:
             return file
         except IOError:
             if ".json" not in path:  # try opening the json file with .json
-                self.setPath(path + ".json")
-                return self.open()
+                self.__setPath(path + ".json")
+                return self.__open()
             else:
                 return {}
         except ValueError:
@@ -74,6 +74,6 @@ class Yoda:
     def getPath(self):
         return self.path
 
-    def setPath(self, path):
+    def __setPath(self, path):
         self.path = path
 
