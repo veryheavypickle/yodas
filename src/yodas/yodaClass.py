@@ -54,7 +54,13 @@ class Yoda:
     def write(self, contents):
         assert type(contents) is dict
         path = self.getPath()
-        jsonFile = open(path, "w")
+        try:
+            jsonFile = open(path, "w")
+        except FileNotFoundError:
+            # If Yoda has to create the dirs that are required
+            dirPath = os.path.dirname(path)
+            os.makedirs(dirPath)
+            jsonFile = open(path, "w")
         json.dump(contents, jsonFile, indent=4)
         jsonFile.close()
 
