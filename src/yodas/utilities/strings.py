@@ -3,15 +3,16 @@ def camelCaseSplit(string):
     :param string:
     :return: string
     """
-    word = string[0].upper()
-    i = 1
-    while i < len(string):
-        char = string[i]
-        if (word[i - 1].islower() or word[i - 1] == " ") and char.isupper():
-            word += " " + char
+    word = ""
+    prevChar = ""
+    for char in string:
+        if prevChar == "":  # is start of string
+            word += char.upper()
+        elif prevChar.islower() and char.isupper():
+            word += " " + char.upper()
         else:
             word += char
-        i += 1
+        prevChar = char
 
     return word
 
@@ -21,7 +22,6 @@ def snakeCaseSplit(string):
     :param string:
     :return: string
     """
-
     word = string[0].upper()
     i = 1
     while i < len(string):
@@ -33,7 +33,6 @@ def snakeCaseSplit(string):
         else:
             word += char
         i += 1
-
     return word
 
 
