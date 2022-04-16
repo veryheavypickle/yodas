@@ -35,8 +35,11 @@ For example `helloWorld` and `hello_world` both results in `Hello World`
 Classes
 =======
 
-Menu(items, title=None, subtitle=None, execute=True)
+Menu
 ----------------------------------------------------
+```python
+Menu(items, title=None, subtitle=None, execute=True)
+```
 This creates a CLI menu based on the inputs.
 #### Inputs
 1. items `list` (required)
@@ -56,21 +59,25 @@ If not none, will display everytime `menu.select()` is called.
 **execute**
 By default it is `True`, if a function is inputted in items, it will automatically execute it when selected
 
-#### Example
-1. `>>> from yodas import Menu`
-2. `>>> menu = Menu(["hello"])`
-3. To run the CLI
+## Usage
+```python
+>>> from yodas import Menu
+>>> menu = Menu(["hello"])`
 ```
+To run the CLI
+```python
 >>> menu.select()
 ====================================================================================================
 0 : hello
 
 Choose an option: 
 ```
-4. Inputting `0`, the function `menu.select()` will return `hello`
-5. `>>> menu.add(exit)` adding pythons built-in `exit` to the menu
-6. Run the CLI again.
+Inputting `0`, the function `menu.select()` will return `'hello'`
+```python
+>>> menu.add(exit)
 ```
+adding pythons built-in `exit` to the menu. Running `menu.select()` again.
+```python
 >>> menu.select()
 ====================================================================================================
 0 : hello
@@ -78,25 +85,47 @@ Choose an option:
 
 Choose an option: 
 ```
-6. Selecting `1` results in executing `exit()`
-7. To stop automatically running functions `>>> menu.setExecute(False)` This can also be setup upon menu creation `>>> menu = Menu([exit, "hello"], execute=False)`
-8. To add a custom label, just use a dictionary `>>> menu.add({"Exit Python": exit})`
+Selecting `1` results in executing `exit()` automatically. To stop automatically running functions
+```python
+>>> menu.setExecute(False)
+```
+This can also be setup upon menu creation
+```python
+>>> menu = Menu([exit, "hello"], execute=False)
+```
+To add a custom label, just use a dictionary
+```python
+>>> menu.add({"Exit Python": exit})
+```
 
-#### Functions
-**Menu.select()**
+###
+### select
+```python
+>>> Menu.select()
+```
 Will open a CLI interface where the user can select an option
 It will return any data type given to upon creating the `Menu` instance
+> **returns**: `any`
 
-**Menu.add(item)**
-Where item is any datatype, see `items` variable in creating a Menu instance.
+###
+### add
+```python
+>>> Menu.add(item)
+```
+See `items` variable in creating a Menu instance. Adds a new item to the menu
+> *item:* `any`
+
+
 
 Yoda
 ----
 This manages JSON files in a safe manner. When creating an object, the path does not have to exist. If the json file does not exist, Yoda will automatically create one using the `keys` as reference.
+
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
 ## Inputs
-1. path `str` (required)
-2. keys `list`
+> *path:* `str` (required)
+> 
+> *keys:* `list`
 
 **path**
 This is the path to the JSON file
@@ -133,32 +162,31 @@ $ cat file.json
 }% 
 ```
 
-## Functions
+###
 ### contents
 ```python
 >>> Yoda.contents()
 ```
 Will return the contents of the JSON file, reading from the disk everytime.
-> ```python
-> return dict
-> ```
+> **returns:** `dict`
 
+###
 ### write
 ```python
 >>> Yoda.write(contents)
 ```
 This will overwrite the existing JSON file with the variable `contents`
-> **contents:** `dict`
+> *contents*: `dict`
 
+###
 ### delete
 ```python
 >>> Yoda.delete()
 ```
-Will delete the JSON file associated with the Yoda instance
-> ```python
-> return bool
-> ```
+Will delete the JSON file associated with the Yoda instance. Returns True if it was successful, False if nothing was deleted.
+> **returns:** `bool`
 
+###
 ### getPath
 ```python
 >>> Yoda.getPath()
@@ -166,13 +194,13 @@ Will delete the JSON file associated with the Yoda instance
 Is used to get the path where the JSON file is stored.
 > **returns:** `str`
 
+###
 ### setPath
 ```python
 >>> Yoda.setPath(path)
 ```
-> This used to set the path
-
-> **path:** `str`
+This used to set the path
+> *path:* `str`
 
 
 TODO
