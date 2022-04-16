@@ -110,8 +110,8 @@ For example in telegram, I don't want to have my first commits to have the teleg
 ### Usage
 To implement a Yoda object
 ```python
-from yodas import Yoda
-yoda = Yoda("file.json", ["ping!"])
+>>> from yodas import Yoda
+>>> yoda = Yoda("file.json", ["ping!"])
 ```
 
 Executing this will result in
@@ -122,7 +122,7 @@ ping!:
 
 Entering `pong!` will save it to the JSON file. To check this, run
 ```python
->>> print(yoda.contents())
+>>> yoda.contents()
 {'ping!': 'pong!'}
 ```
 
@@ -134,20 +134,30 @@ $ cat file.json
 }% 
 ```
 
-#### Functions
-`Yoda.contents()`
+### Yoda Functions
+```python
+>>> contents()
+```
 Will return the contents of the JSON file, reading from the disk everytime.
 
-`Yoda.write(contents)`
-Where `contents` is a dictionary. This will overwrite the existing JSON file with the variable contents
+```python
+>>> write(contents)
+```
+Where `contents` is a dictionary. This will overwrite the existing JSON file with the variable `contents`
 
-`Yoda.delete()`
+```python
+>>> delete()
+```
 Will delete the JSON file associated with the Yoda instance
 
-`getPath()`
+```python
+>>> getPath()
+```
 Is used to get the path where the JSON file is stored.
 
-`setPath(path)`
+```python
+>>> setPath(path)
+```
 Where `path` is a string. This used to set the path
 
 TODO
