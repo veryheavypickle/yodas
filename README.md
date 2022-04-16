@@ -53,6 +53,7 @@ Menu
 This creates a CLI menu based on the inputs.
 ## Inputs
 ```python
+from yodas import Menu
 Menu(items, title=None, subtitle=None, execute=True)
 ```
 > *items:* `list` (required)
@@ -80,12 +81,12 @@ By default it is `True`, if a function is inputted in items, it will automatical
 ## Usage
 ```python
 >>> from yodas import Menu
->>> menu = Menu(["hello"])`
+>>> menu = Menu(["hello"])
 ```
 To run the CLI
 ```python
 >>> menu.select()
-====================================================================================================
+====================
 0 : hello
 
 Choose an option: 
@@ -97,7 +98,7 @@ Inputting `0`, the function `menu.select()` will return `'hello'`
 adding pythons built-in `exit` to the menu. Running `menu.select()` again.
 ```python
 >>> menu.select()
-====================================================================================================
+====================
 0 : hello
 1 : Quit
 
@@ -130,8 +131,20 @@ It will return any data type given to upon creating the `Menu` instance
 ```python
 >>> Menu.add(item)
 ```
-See `items` variable in creating a Menu instance. Adds a new item to the menu
+See `items` variable in creating a Menu instance. Adds a new item to the menu. Returns bool on whether operation was successful
 > *item:* `any`
+> 
+> **returns:** `bool`
+
+###
+### setExecute
+```python
+>>> Menu.setExecute(execute)
+```
+Sets the auto execute on the menu which dictates whether functions should be automatically executed when it is selected. Returns bool on whether operation was successful
+> *execute:* `bool`
+> 
+> **returns**: `bool`
 
 Yoda
 ----
@@ -140,6 +153,7 @@ This manages JSON files in a safe manner. When creating an object, the path does
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
 ## Inputs
 ```python
+from yodas import Yoda
 Yoda(path, keys=[])
 ```
 > *path:* `str` (required)
@@ -196,8 +210,9 @@ Will return the contents of the JSON file, reading from the disk everytime.
 ```python
 >>> Yoda.write(contents)
 ```
-This will overwrite the existing JSON file with the variable `contents`
+This will overwrite the existing JSON file with the variable `contents`. Returns `bool` if the operation was successful.
 > *contents:* `dict`
+> **returns:** `bool`
 
 ###
 ### delete
@@ -235,6 +250,17 @@ TODO
 
 Changelog
 =========
+
+1.3.1
+-----
+Adding return variables to all functions.
+
+1. Majorly reformatted README.md
+2. `Yoda.delete()` now returns `bool` depending on whether the operation was successful or not.
+3. `Yoda.__setPath()` now returns `bool` if successful
+4. `Yoda.write()` returns `bool` 
+5. `Menu.setExecute()` returns `bool`
+6. `Menu.add()` returns `bool`
 
 1.3.0
 -----

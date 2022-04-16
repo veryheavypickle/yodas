@@ -72,7 +72,9 @@ class Menu:
         else:
             # is string, float, int... etc
             self.items.append({item: item})
+        return True
 
     def setExecute(self, execute):
         assert execute is bool
         self.execute = execute
+        return True

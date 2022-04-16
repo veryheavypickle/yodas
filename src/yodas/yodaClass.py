@@ -66,6 +66,7 @@ class Yoda:
             jsonFile = open(path, "w")
         json.dump(contents, jsonFile, indent=4)
         jsonFile.close()
+        return True
 
     def delete(self):
         if os.path.exists(self.getPath()):
@@ -77,5 +78,8 @@ class Yoda:
         return self.path
 
     def __setPath(self, path):
-        self.path = path
+        if self.path != path:
+            self.path = path
+            return True
+        return False
 
