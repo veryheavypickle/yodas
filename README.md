@@ -17,9 +17,25 @@ To see examples, check out `examples.py`
 
 Install
 =======
+
+From PIP
+--------
 Since I didn't want to copy git repos into other projects, I made a pip package
 ```shell
 $ pip install yodas
+```
+or to upgrade
+```shell
+$ pip install --upgrade yodas 
+```
+
+From Source
+-----------
+The script I use is `build.sh`. For this I assume you already have a virtual python environment or that python3 is aliased as python.
+```shell
+$ python -m pip install --upgrade twine build
+$ python -m build
+$ pip install dist/*.tar.gz  # for the latest version of yodas.
 ```
 
 Functions
@@ -196,7 +212,7 @@ When `subtitle is None`, `title = "Menu"` and `layout = "=" * 5 " %T " + "=" * 5
 0 : First menu Item
 1 : 2nd Item
 ```
-When `subtitle is None`, `title = "Menu"` and `layout = %T` results in the appearance of.
+When `subtitle is None`, `title = "Menu"` and `layout = "%T"` results in the appearance of.
 ```
 Example Menu
 0 : First menu Item
