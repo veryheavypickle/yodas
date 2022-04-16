@@ -91,7 +91,9 @@ It will return any data type given to upon creating the `Menu` instance
 Where item is any datatype, see `items` variable in creating a Menu instance.
 
 ----------------------------------------------------
+```python
 Yoda(items, title=None, subtitle=None, execute=True)
+```
 ----------------------------------------------------
 This manages JSON files in a safe manner. When creating an object, the path does not have to exist. If the json file does not exist, Yoda will automatically create one using the `keys` as reference.
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
@@ -136,29 +138,34 @@ $ cat file.json
 
 ### Yoda Functions
 ```python
->>> contents()
+>>> Yoda.contents()
 ```
 Will return the contents of the JSON file, reading from the disk everytime.
 
+
 ```python
->>> write(contents)
+>>> Yoda.write(contents)
 ```
 Where `contents` is a dictionary. This will overwrite the existing JSON file with the variable `contents`
 
+
 ```python
->>> delete()
+>>> Yoda.delete()
 ```
 Will delete the JSON file associated with the Yoda instance
 
+
 ```python
->>> getPath()
+>>> Yoda.getPath()
 ```
 Is used to get the path where the JSON file is stored.
 
+
 ```python
->>> setPath(path)
+>>> Yoda.setPath(path)
 ```
 Where `path` is a string. This used to set the path
+
 
 TODO
 ====
@@ -168,8 +175,10 @@ TODO
 4. Fix camelCaseSplit() where `thisIsATest` results in `This Is ATest`
 5. Add multiple language support
 
+
 Changelog
 =========
+
 -----
 1.3.0
 -----
@@ -178,6 +187,7 @@ Changelog
 3. In Yoda() changed name of function `setPath()` to `__setPath()`
 4. In Menu() added new function `setExecute()`
 
+
 -----
 1.2.0
 -----
@@ -185,11 +195,13 @@ Changelog
 2. In Menu() added support to add new items after menu creation using Menu.add()
 3. In Menu() moved code to add items to Menu.add()
 
+
 -----
 1.1.1
 -----
 1. Added support to create empty Yoda `Yoda("empty.json")` will create a JSON with `{}`
 2. Fixed issue where even in empty Yoda files, it will ask for the details
+
 
 -----
 1.1.0
