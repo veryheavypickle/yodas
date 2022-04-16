@@ -2,11 +2,17 @@
 A group of tools I programmed that I use regularly. Public because why not, exists because I was tired of scrolling through repos to copy/paste the same code again and again.
 To see examples, check out `examples.py`
 
-## Install
+=======
+Install
+=======
 Since I didn't want to copy git repos into other projects, I made a pip package
-`$ pip install yodas`
+.. code:: shell
 
-## Functions
+    $ pip install yodas
+
+=========
+Functions
+=========
 **camelCaseSplit()**
 Input: `str`
 Return: `str`
@@ -28,8 +34,12 @@ Return: `str`
 This function takes a string in camel case or snake case form and returns it in "normal" form
 For example `helloWorld` and `hello_world` both results in `Hello World`
 
-## Classes
-### Menu(items, title=None, subtitle=None, execute=True)
+=======
+Classes
+=======
+----------------------------------------------------
+Menu(items, title=None, subtitle=None, execute=True)
+----------------------------------------------------
 This creates a CLI menu based on the inputs.
 #### Inputs
 1. items `list` (required)
@@ -83,7 +93,9 @@ It will return any data type given to upon creating the `Menu` instance
 **Menu.add(item)**
 Where item is any datatype, see `items` variable in creating a Menu instance.
 
-### Yoda(items, title=None, subtitle=None, execute=True)
+----------------------------------------------------
+Yoda(items, title=None, subtitle=None, execute=True)
+----------------------------------------------------
 This manages JSON files in a safe manner. When creating an object, the path does not have to exist. If the json file does not exist, Yoda will automatically create one using the `keys` as reference.
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
 #### Inputs
@@ -136,30 +148,42 @@ Is used to get the path where the JSON file is stored.
 `setPath(path)`
 Where `path` is a string. This used to set the path
 
-## TODO
+====
+TODO
+====
 1. In Yoda class, add option to have other variables like a `key: list`, or `key: dict` rather than just `str: str`
 2. In Yoda class, add option to have custom questions, similar to what is implemented in Menu()
 3. In Menu class, add argument management
 4. Fix camelCaseSplit() where `thisIsATest` results in `This Is ATest`
 5. Add multiple language support
 
-## Changelog
-### 1.3.0
+=========
+Changelog
+=========
+-----
+1.3.0
+-----
 1. Major update to README.md
 2. In Yoda() changed name of function `open()` to `__open()`
 3. In Yoda() changed name of function `setPath()` to `__setPath()`
 4. In Menu() added new function `setExecute()`
 
-### 1.2.0
+-----
+1.2.0
+-----
 1. Added full support to store items other than functions
 2. In Menu() added support to add new items after menu creation using Menu.add()
 3. In Menu() moved code to add items to Menu.add()
 
-### 1.1.1
+-----
+1.1.1
+-----
 1. Added support to create empty Yoda `Yoda("empty.json")` will create a JSON with `{}`
 2. Fixed issue where even in empty Yoda files, it will ask for the details
 
-### 1.1.0
+-----
+1.1.0
+-----
 1. Added support for string only menus
 2. Changed Menu.show() to Menu.select()
 3. Fixed issue where camelCaseSplit() wouldn't detect words with a length of 2
