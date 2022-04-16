@@ -2,7 +2,6 @@
 A group of tools I programmed that I use regularly. Public because why not, exists because I was tired of scrolling through repos to copy/paste the same code again and again.
 To see examples, check out `examples.py`
 
-=======
 Install
 =======
 Since I didn't want to copy git repos into other projects, I made a pip package
@@ -10,7 +9,6 @@ Since I didn't want to copy git repos into other projects, I made a pip package
 
     $ pip install yodas
 
-=========
 Functions
 =========
 **camelCaseSplit()**
@@ -34,7 +32,6 @@ Return: `str`
 This function takes a string in camel case or snake case form and returns it in "normal" form
 For example `helloWorld` and `hello_world` both results in `Hello World`
 
-=======
 Classes
 =======
 ----------------------------------------------------
@@ -98,7 +95,7 @@ Yoda(items, title=None, subtitle=None, execute=True)
 ----------------------------------------------------
 This manages JSON files in a safe manner. When creating an object, the path does not have to exist. If the json file does not exist, Yoda will automatically create one using the `keys` as reference.
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
-#### Inputs
+### Inputs
 1. path `str` (required)
 2. keys `list`
 
@@ -110,22 +107,27 @@ This is a list of keys that will be in the JSON file. If the JSON file does not 
 This is used by me personally to write scripts that require authentication.
 For example in telegram, I don't want to have my first commits to have the telegram token.
 
-#### Example
-1. `>>> from yodas import Yoda`
-2. 
+### Usage
+To implement a Yoda object
+```python
+from yodas import Yoda
+yoda = Yoda("file.json", ["ping!"])
 ```
->>> yoda = Yoda("file.json", ["ping!"])
+
+Executing this will result in
+```
 For each key, give its required value
 ping!: 
 ```
-3. Entering `pong!` will save it to the JSON file.
-4. To view its contents
-```
->>> yoda.contents()
+
+Entering `pong!` will save it to the JSON file. To check this, run
+```python
+>>> print(yoda.contents())
 {'ping!': 'pong!'}
 ```
-5. To doublecheck that the file was indeed created 
-```
+
+To doublecheck this
+```shell
 $ cat file.json
 {
     "ping!": "pong!"
@@ -148,7 +150,6 @@ Is used to get the path where the JSON file is stored.
 `setPath(path)`
 Where `path` is a string. This used to set the path
 
-====
 TODO
 ====
 1. In Yoda class, add option to have other variables like a `key: list`, or `key: dict` rather than just `str: str`
@@ -157,7 +158,6 @@ TODO
 4. Fix camelCaseSplit() where `thisIsATest` results in `This Is ATest`
 5. Add multiple language support
 
-=========
 Changelog
 =========
 -----
