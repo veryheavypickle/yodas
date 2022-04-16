@@ -138,7 +138,10 @@ $ cat file.json
 >>> Yoda.contents()
 ```
 Will return the contents of the JSON file, reading from the disk everytime.
-> **returns:** `dict`
+> ```python
+> return dict
+> ```
+
 
 ```python
 >>> Yoda.write(contents)
