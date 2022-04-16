@@ -1,6 +1,19 @@
-# yodaTools
+```
+                   __                     
+                  /\ \                    
+ __  __    ___    \_\ \     __      ____  
+/\ \/\ \  / __`\  /'_` \  /'__`\   /',__\ 
+\ \ \_\ \/\ \L\ \/\ \L\ \/\ \L\.\_/\__, `\
+ \/`____ \ \____/\ \___,_\ \__/.\_\/\____/
+  `/___/> \/___/  \/__,_ /\/__/\/_/\/___/ 
+     /\___/                               
+     \/__/
+```
 A group of tools I programmed that I use regularly. Public because why not, exists because I was tired of scrolling through repos to copy/paste the same code again and again.
 To see examples, check out `examples.py`
+
+### Projects that use yodas
+1. [IOSBackupExtractor](https://github.com/veryheavypickle/iOSBackupExtractor)
 
 Install
 =======
@@ -212,6 +225,7 @@ Will return the contents of the JSON file, reading from the disk everytime.
 ```
 This will overwrite the existing JSON file with the variable `contents`. Returns `bool` if the operation was successful.
 > *contents:* `dict`
+> 
 > **returns:** `bool`
 
 ###
