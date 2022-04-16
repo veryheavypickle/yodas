@@ -11,21 +11,24 @@ class Menu:
     execute
     if true, the menu automatically executes the selected function
     """
-    def __init__(self, items, title=None, subtitle=None, execute=True):
+    def __init__(self, items, title=None, subtitle=None, execute=True, layout=None):
         assert type(items) is list
         self.items = []
         self.title = title
         self.subtitle = subtitle
         self.execute = bool(execute)
+
+        # Formatting header
+        if not layout:
+            # Default view
+            self.layout = self.setLayout("=" * 50 + "\n%T\n%S")
+
+        # Add items to menu
         for item in items:
-            self.add(item)
+            self.append(item)
 
     def select(self):
-        print("=" * 100)
-        if self.title:
-            print("\n" + self.title)
-        if self.subtitle:
-            print("\n" + self.subtitle)
+        self.__printLayout()
 
         for i in range(len(self.items)):
             functionName = list(self.items[i].keys())[0]
@@ -54,7 +57,31 @@ class Menu:
             chosenFunction()
         return chosenFunction
 
-    def add(self, item):
+    def setLayout(self, layout):
+        """
+        This is used to customise the format, similar to 'git log --pretty="%H custom text"'
+        %T = Title
+        %S = Subtitle
+        """
+        self.layout = layout
+        return self.layout
+
+    def __printLayout(self):
+        layout = self.layout
+
+        titleVar = "%T"
+        subtitleVar = "%S"
+        if self.title and titleVar in self.layout:
+            layout = layout.replace(titleVar, self.title)
+        else:
+            layout = layout.replace(titleVar, "")
+        if self.subtitle and subtitleVar in self.layout:
+            layout = layout.replace(subtitleVar, self.subtitle)
+        else:
+            layout = layout.replace(subtitleVar, "")
+        print(layout)
+
+    def append(self, item):
         """
         This adds items into the menu
         """
@@ -73,6 +100,22 @@ class Menu:
             # is string, float, int... etc
             self.items.append({item: item})
         return True
+
+    def pop(self):
+        """
+        Pops item from menu
+        """
+        return self.items.pop()
+
+    def remove(self, item):
+        """
+        Removes specific item from menu items
+        """
+        try:
+            self.items.remove(item)
+            return True
+        except ValueError:
+            return False
 
     def setExecute(self, execute):
         assert execute is bool

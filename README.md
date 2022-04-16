@@ -67,7 +67,7 @@ This creates a CLI menu based on the inputs.
 ## Inputs
 ```python
 from yodas import Menu
-Menu(items, title=None, subtitle=None, execute=True)
+Menu(items, title=None, subtitle=None, execute=True, layout=None)
 ```
 > *items:* `list` (required)
 > 
@@ -76,6 +76,8 @@ Menu(items, title=None, subtitle=None, execute=True)
 > *subtitle:* `str`
 > 
 > *execute:* `bool`
+> 
+> *layout:* `str`
 > 
 > **returns:** `Menu`
 
@@ -90,6 +92,9 @@ If not none, will display everytime `menu.select()` is called.
 
 **execute**
 By default it is `True`, if a function is inputted in items, it will automatically execute it when selected
+
+**layout**
+This is a string that customises the appearance of the menu.
 
 ## Usage
 ```python
@@ -106,9 +111,9 @@ Choose an option:
 ```
 Inputting `0`, the function `menu.select()` will return `'hello'`
 ```python
->>> menu.add(exit)
+>>> menu.append(exit)
 ```
-adding pythons built-in `exit` to the menu. Running `menu.select()` again.
+appending pythons built-in `exit` to the menu. Running `menu.select()` again.
 ```python
 >>> menu.select()
 ====================
@@ -125,9 +130,9 @@ This can also be setup upon menu creation
 ```python
 >>> menu = Menu([exit, "hello"], execute=False)
 ```
-To add a custom label, just use a dictionary
+To append a custom label, just use a dictionary
 ```python
->>> menu.add({"Exit Python": exit})
+>>> menu.append({"Exit Python": exit})
 ```
 
 ## Functions
@@ -140,11 +145,31 @@ It will return any data type given to upon creating the `Menu` instance
 > **returns**: `any`
 
 ###
-### add
+### append
 ```python
->>> Menu.add(item)
+>>> Menu.append(item)
 ```
-See `items` variable in creating a Menu instance. Adds a new item to the menu. Returns bool on whether operation was successful
+See `items` variable in creating a Menu instance. Appends a new item to the menu. Returns bool on whether operation was successful
+> *item:* `any`
+> 
+> **returns:** `bool`
+
+###
+### pop
+```python
+>>> Menu.pop()
+```
+Pops the last item from the list of menu items. Returns the item removed
+> *item:* `any`
+> 
+> **returns:** `any`
+
+###
+### remove
+```python
+>>> Menu.remove(item)
+```
+Removes a specific item from the menu list. Will return True if operation was successful, returns False if item doesn't exist
 > *item:* `any`
 > 
 > **returns:** `bool`
@@ -158,6 +183,29 @@ Sets the auto execute on the menu which dictates whether functions should be aut
 > *execute:* `bool`
 > 
 > **returns**: `bool`
+
+###
+### setLayout
+This customises the appearance of the menu. By default, it is `"=" * 50 + "\n%T\n%S"`.
+```python
+>>> menu.setLayout(layout)
+```
+When `subtitle is None`, `title = "Menu"` and `layout = "=" * 5 " %T " + "=" * 5` results in the appearance of.
+```
+===== Menu =====
+0 : First menu Item
+1 : 2nd Item
+```
+When `subtitle is None`, `title = "Menu"` and `layout = %T` results in the appearance of.
+```
+Example Menu
+0 : First menu Item
+1 : 2nd Item
+```
+> *layout:* `string`
+> > %T is `title`
+> 
+> > %S is `subtitle`
 
 Yoda
 ----
@@ -258,10 +306,19 @@ TODO
 2. In Yoda class, add option to have custom questions rather than just reading keys
 3. In Menu class, add argument management
 4. Fix `camelCaseSplit()` where `thisIsATest` results in `This Is ATest`
-6. In Menu class, add a `remove()` function to remove a menu item
 
 Changelog
 =========
+
+1.4.0
+-----
+Adding more insight into the inner workings of `Menu`
+
+1. Added `Menu.setLayout(laout)` which customises the appearance of the Menu
+2. Changed `Menu.add(item)` to `Menu.append(item)`
+3. Added new function `Menu.pop()`
+4. Added new function `Menu.remove(item)`
+5. Fixed format issue in `README`
 
 1.3.1
 -----
