@@ -156,14 +156,14 @@ Will delete the JSON file associated with the Yoda instance
 ```python
 >>> Yoda.getPath()
 ```
-**Returns: ** `str`
+**Returns:** `str`
 Is used to get the path where the JSON file is stored.
 
 ### setPath
 ```python
 >>> Yoda.setPath(path)
 ```
-**path: ** `str`
+**path:** `str`
 Where `path` is a string. This used to set the path
 
 
