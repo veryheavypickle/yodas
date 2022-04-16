@@ -164,8 +164,8 @@ Is used to get the path where the JSON file is stored.
 ```python
 >>> Yoda.setPath(path)
 ```
+This used to set the path
 > **path:** `str`
-> Where `path` is a string. This used to set the path
 
 
 TODO
