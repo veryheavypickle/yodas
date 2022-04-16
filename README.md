@@ -157,6 +157,7 @@ Will delete the JSON file associated with the Yoda instance
 >>> Yoda.getPath()
 ```
 **Returns:** `str`
+
 Is used to get the path where the JSON file is stored.
 
 ### setPath
@@ -164,6 +165,7 @@ Is used to get the path where the JSON file is stored.
 >>> Yoda.setPath(path)
 ```
 **path:** `str`
+
 Where `path` is a string. This used to set the path
 
 
