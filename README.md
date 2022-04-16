@@ -5,32 +5,45 @@ To see examples, check out `examples.py`
 Install
 =======
 Since I didn't want to copy git repos into other projects, I made a pip package
-.. code:: shell
-
-    $ pip install yodas
+```shell
+$ pip install yodas
+```
 
 Functions
 =========
-**camelCaseSplit()**
-Input: `str`
-Return: `str`
-
+###
+### camelCaseSplit
+```python
+>>> from yodas import camelCaseSplit
+>>> camelCaseSplit(string)
+```
 This function takes a string in camel case form and returns it in "normal" form
 For example `helloWorld` results in `Hello World`
+> *string:* `str`
+> 
+> **returns:** `str`
 
-**snakeCaseSplit()**
-Input: `str`
-Return: `str`
-
+### snakeCaseSplit
+```python
+>>> from yodas import snakeCaseSplit
+>>> snakeCaseSplit(string)
+```
 This function takes a string in snake case form and returns it in "normal" form
 For example `hello_world` results in `Hello World`
+> *string:* `str`
+> 
+> **returns:** `str`
 
-**caseSplit()**
-Input: `str`
-Return: `str`
-
+### caseSplit
+```python
+>>> from yodas import caseSplit
+>>> caseSplit(string)
+```
 This function takes a string in camel case or snake case form and returns it in "normal" form
 For example `helloWorld` and `hello_world` both results in `Hello World`
+> *string:* `str`
+> 
+> **returns:** `str`
 
 Classes
 =======
@@ -46,11 +59,11 @@ Menu(items, title=None, subtitle=None, execute=True)
 > 
 > *title:* `str`
 > 
-> *subtitle* `str`
+> *subtitle:* `str`
 > 
-> *execute* `bool`
+> *execute:* `bool`
 > 
-> **returns** `Menu`
+> **returns:** `Menu`
 
 **items**
 When inputting a `[dictionary]`, it will assume that the key is the title of the object as a string, the value can be any data type, even functions
@@ -120,8 +133,6 @@ It will return any data type given to upon creating the `Menu` instance
 See `items` variable in creating a Menu instance. Adds a new item to the menu
 > *item:* `any`
 
-
-
 Yoda
 ----
 This manages JSON files in a safe manner. When creating an object, the path does not have to exist. If the json file does not exist, Yoda will automatically create one using the `keys` as reference.
@@ -134,6 +145,8 @@ Yoda(path, keys=[])
 > *path:* `str` (required)
 > 
 > *keys:* `list`
+> 
+> **returns:* `Yoda`
 
 **path**
 This is the path to the JSON file
@@ -184,7 +197,7 @@ Will return the contents of the JSON file, reading from the disk everytime.
 >>> Yoda.write(contents)
 ```
 This will overwrite the existing JSON file with the variable `contents`
-> *contents*: `dict`
+> *contents:* `dict`
 
 ###
 ### delete
