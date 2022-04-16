@@ -29,13 +29,20 @@ or to upgrade
 $ pip install --upgrade yodas 
 ```
 
-From Source
------------
+From Git Repository
+-------------------
 The script I use is `build.sh`. For this I assume you already have a virtual python environment or that python3 is aliased as python.
 ```shell
 $ python -m pip install --upgrade twine build
 $ python -m build
 $ pip install dist/*.tar.gz  # for the latest version of yodas.
+```
+
+From Releases (latest)
+-------------
+```shell
+$ wget https://github.com/veryheavypickle/yodas/releases/download/v1.4.0/yodas-1.4.0.tar.gz
+$ pip install yodas-1.4.0.tar.gz
 ```
 
 Functions
@@ -330,7 +337,7 @@ Changelog
 -----
 Adding more insight into the inner workings of `Menu`
 
-1. Added `Menu.setLayout(laout)` which customises the appearance of the Menu
+1. Added `Menu.setLayout(layout)` which customises the appearance of the Menu
 2. Changed `Menu.add(item)` to `Menu.append(item)`
 3. Added new function `Menu.pop()`
 4. Added new function `Menu.remove(item)`
