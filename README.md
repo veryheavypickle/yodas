@@ -34,7 +34,7 @@ For example `helloWorld` and `hello_world` both results in `Hello World`
 
 Classes
 =======
-----------------------------------------------------
+
 Menu(items, title=None, subtitle=None, execute=True)
 ----------------------------------------------------
 This creates a CLI menu based on the inputs.
@@ -90,14 +90,11 @@ It will return any data type given to upon creating the `Menu` instance
 **Menu.add(item)**
 Where item is any datatype, see `items` variable in creating a Menu instance.
 
-----------------------------------------------------
-```python
-Yoda(items, title=None, subtitle=None, execute=True)
-```
-----------------------------------------------------
+Yoda
+----
 This manages JSON files in a safe manner. When creating an object, the path does not have to exist. If the json file does not exist, Yoda will automatically create one using the `keys` as reference.
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
-### Inputs
+## Inputs
 1. path `str` (required)
 2. keys `list`
 
@@ -109,7 +106,7 @@ This is a list of keys that will be in the JSON file. If the JSON file does not 
 This is used by me personally to write scripts that require authentication.
 For example in telegram, I don't want to have my first commits to have the telegram token.
 
-### Usage
+## Usage
 To implement a Yoda object
 ```python
 >>> from yodas import Yoda
@@ -136,34 +133,37 @@ $ cat file.json
 }% 
 ```
 
-### Yoda Functions
+## Functions
+### contents
 ```python
 >>> Yoda.contents()
 ```
 Will return the contents of the JSON file, reading from the disk everytime.
 
-
+### write
 ```python
 >>> Yoda.write(contents)
 ```
 Where `contents` is a dictionary. This will overwrite the existing JSON file with the variable `contents`
 
-
+### delete
 ```python
 >>> Yoda.delete()
 ```
 Will delete the JSON file associated with the Yoda instance
 
-
+### getPath
 ```python
 >>> Yoda.getPath()
 ```
+**Returns: ** `str`
 Is used to get the path where the JSON file is stored.
 
-
+### setPath
 ```python
 >>> Yoda.setPath(path)
 ```
+**path: ** `str`
 Where `path` is a string. This used to set the path
 
 
@@ -179,7 +179,6 @@ TODO
 Changelog
 =========
 
------
 1.3.0
 -----
 1. Major update to README.md
@@ -187,23 +186,17 @@ Changelog
 3. In Yoda() changed name of function `setPath()` to `__setPath()`
 4. In Menu() added new function `setExecute()`
 
-
------
 1.2.0
 -----
 1. Added full support to store items other than functions
 2. In Menu() added support to add new items after menu creation using Menu.add()
 3. In Menu() moved code to add items to Menu.add()
 
-
------
 1.1.1
 -----
 1. Added support to create empty Yoda `Yoda("empty.json")` will create a JSON with `{}`
 2. Fixed issue where even in empty Yoda files, it will ask for the details
 
-
------
 1.1.0
 -----
 1. Added support for string only menus
