@@ -143,6 +143,7 @@ Will return the contents of the JSON file, reading from the disk everytime.
 > ```
 
 
+
 ```python
 >>> Yoda.write(contents)
 ```
