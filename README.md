@@ -130,7 +130,7 @@ To add a custom label, just use a dictionary
 >>> menu.add({"Exit Python": exit})
 ```
 
-###
+## Functions
 ### select
 ```python
 >>> Menu.select()
@@ -173,7 +173,7 @@ Yoda(path, keys=[])
 > 
 > *keys:* `list`
 > 
-> **returns:* `Yoda`
+> **returns:** `Yoda`
 
 **path**
 This is the path to the JSON file
@@ -209,8 +209,7 @@ $ cat file.json
     "ping!": "pong!"
 }% 
 ```
-
-###
+## Functions
 ### contents
 ```python
 >>> Yoda.contents()
@@ -256,11 +255,10 @@ This used to set the path
 TODO
 ====
 1. In Yoda class, add option to have other variables like a `key: list`, or `key: dict` rather than just `str: str`
-2. In Yoda class, add option to have custom questions, similar to what is implemented in Menu()
+2. In Yoda class, add option to have custom questions rather than just reading keys
 3. In Menu class, add argument management
-4. Fix camelCaseSplit() where `thisIsATest` results in `This Is ATest`
-5. Add multiple language support
-
+4. Fix `camelCaseSplit()` where `thisIsATest` results in `This Is ATest`
+6. In Menu class, add a `remove()` function to remove a menu item
 
 Changelog
 =========
