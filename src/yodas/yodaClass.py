@@ -70,6 +70,8 @@ class Yoda:
     def delete(self):
         if os.path.exists(self.getPath()):
             os.remove(self.getPath())
+            return True
+        return False
 
     def getPath(self):
         return self.path

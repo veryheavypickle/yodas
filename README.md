@@ -134,6 +134,7 @@ $ cat file.json
 ```
 
 ## Functions
+### contents
 ```python
 >>> Yoda.contents()
 ```
@@ -142,8 +143,7 @@ Will return the contents of the JSON file, reading from the disk everytime.
 > return dict
 > ```
 
-
-
+### write
 ```python
 >>> Yoda.write(contents)
 ```
@@ -155,6 +155,9 @@ This will overwrite the existing JSON file with the variable `contents`
 >>> Yoda.delete()
 ```
 Will delete the JSON file associated with the Yoda instance
+> ```python
+> return dict
+> ```
 
 ### getPath
 ```python
