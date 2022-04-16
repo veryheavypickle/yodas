@@ -183,8 +183,6 @@ See `items` variable in creating a Menu instance. Appends a new item to the menu
 >>> Menu.pop()
 ```
 Pops the last item from the list of menu items. Returns the item removed
-> *item:* `any`
-> 
 > **returns:** `any`
 
 ###
