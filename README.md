@@ -156,7 +156,7 @@ This will overwrite the existing JSON file with the variable `contents`
 ```
 Will delete the JSON file associated with the Yoda instance
 > ```python
-> return dict
+> return bool
 > ```
 
 ### getPath
@@ -170,7 +170,8 @@ Is used to get the path where the JSON file is stored.
 ```python
 >>> Yoda.setPath(path)
 ```
-This used to set the path
+> This used to set the path
+
 > **path:** `str`
 
 
