@@ -37,15 +37,20 @@ Classes
 
 Menu
 ----------------------------------------------------
+This creates a CLI menu based on the inputs.
+## Inputs
 ```python
 Menu(items, title=None, subtitle=None, execute=True)
 ```
-This creates a CLI menu based on the inputs.
-#### Inputs
-1. items `list` (required)
-2. title `str`
-3. subtitle `str`
-4. execute `bool`
+> *items:* `list` (required)
+> 
+> *title:* `str`
+> 
+> *subtitle* `str`
+> 
+> *execute* `bool`
+> 
+> **returns** `Menu`
 
 **items**
 When inputting a `[dictionary]`, it will assume that the key is the title of the object as a string, the value can be any data type, even functions
@@ -123,6 +128,9 @@ This manages JSON files in a safe manner. When creating an object, the path does
 
 For each `key` given upon creation, Yoda will ask the user in a user-friendly manner, what the data is.
 ## Inputs
+```python
+Yoda(path, keys=[])
+```
 > *path:* `str` (required)
 > 
 > *keys:* `list`
