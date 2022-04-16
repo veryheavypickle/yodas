@@ -219,13 +219,13 @@ When `subtitle is None`, `title = "Menu"` and `layout = "=" * 5 " %T " + "=" * 5
 ```
 When `subtitle is None`, `title = "Menu"` and `layout = "%T"` results in the appearance of.
 ```
-Example Menu
+Menu
 0 : First menu Item
 1 : 2nd Item
 ```
 > *layout:* `string`
 > > %T is `title`
-> 
+> >
 > > %S is `subtitle`
 
 Yoda
