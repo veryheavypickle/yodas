@@ -14,6 +14,9 @@ To see examples, check out `examples.py`
 
 ### Projects that use yodas
 1. [IOSBackupExtractor](https://github.com/veryheavypickle/iOSBackupExtractor)
+2. [telegramChatBot](https://github.com/veryheavypickle/telegramChatBot)
+3. [deepLJSONTranslator](https://github.com/veryheavypickle/deepLJSONTranslator)
+4. [phoneTools](https://github.com/veryheavypickle/phoneTools)
 
 Install
 =======
@@ -33,7 +36,7 @@ From Git Repository
 -------------------
 The script I use is `build.sh`. For this I assume you already have a virtual python environment or that python3 is aliased as python.
 ```shell
-$ python -m pip install --upgrade twine build
+$ python -m pip install --upgrade build
 $ python -m build
 $ pip install dist/*.tar.gz  # for the latest version of yodas.
 ```
