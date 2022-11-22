@@ -84,6 +84,17 @@ For example `helloWorld` and `hello_world` both results in `Hello World`
 > 
 > **returns:** `str`
 
+### unixToDatetime
+```python
+>>> from yodas import unixToDatetime
+>>> unixToDatetime(float)
+```
+This function takes a unix time float/int and returns a datetime object.
+For example `605703600` results in `1989-03-12 12:00:00`
+> *unixTimestamp:* `float`
+> 
+> **returns:** `datetime.datetime`
+
 Classes
 =======
 
@@ -308,6 +319,22 @@ Will delete the JSON file associated with the Yoda instance. Returns True if it 
 > **returns:** `bool`
 
 ###
+### getCreationTime
+```python
+>>> Yoda.getCreationTime()
+```
+This will get the date the file was created in datetime format. If the file doesn't exist, it will return null.
+> **returns:** `datetime.datetime`
+
+###
+### getCreationTime
+```python
+>>> Yoda.getModificationTime()
+```
+This will get the date the file was modified in datetime format. If the file doesn't exist, it will return null.
+> **returns:** `datetime.datetime`
+
+###
 ### getPath
 ```python
 >>> Yoda.getPath()
@@ -333,6 +360,15 @@ TODO
 
 Changelog
 =========
+
+1.4.1
+-----
+Added datetime utilities.
+
+1. Added `Yoda.getCreationTime()` which gets the creation/modifcation time of the files
+2. Added `Yoda.getModificationTime()`
+3. Added `unixToDatetime()` to convert unix timestamp to python datetime
+4. Reworked utilities
 
 1.4.0
 -----

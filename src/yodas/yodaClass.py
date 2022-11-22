@@ -1,3 +1,4 @@
+from .utilities import *
 import json
 import os
 
@@ -73,6 +74,18 @@ class Yoda:
             os.remove(self.getPath())
             return True
         return False
+
+    def getCreationTime(self):
+        if os.path.exists(self.getPath()):
+            unixTimestamp = os.path.getctime(self.getPath())
+            return unixToDatetime(unixTimestamp)
+        return None
+
+    def getModificationTime(self):
+        if os.path.exists(self.getPath()):
+            unixTimestamp = os.path.getmtime(self.getPath())
+            return unixToDatetime(unixTimestamp)
+        return None
 
     def getPath(self):
         return self.path

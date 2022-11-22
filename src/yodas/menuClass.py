@@ -1,4 +1,4 @@
-from .utilities.strings import caseSplit
+from .utilities import *
 
 
 class Menu:
